@@ -1,0 +1,11 @@
+{
+    "db": {
+        "migrate" : true,
+        "console" : true,
+        "type"     : "h2",
+        "file"     : "./target/db",
+        "username" : "root",
+        "password" : "1"
+    } 
+
+}

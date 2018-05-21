@@ -1,0 +1,16 @@
+{
+    "title": "User Info",
+    "generates": "create, update, delete, find, query",
+    "fields": {
+        "id": "int auto_increment",
+        "firstName": "varchar(100) required",
+        "lastName": "varchar(100) required",
+        "loginName": "varchar(50) required",
+        "password": "varchar(500) required update false",
+        "gender": "varchar(10) null",
+        "birthday": "date null",
+        "deleted": "boolean required default false internal",
+        "createdAt": "timestamp required value now",
+        "updatedAt": "timestamp required value now"
+    }
+}
