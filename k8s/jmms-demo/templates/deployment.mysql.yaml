@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: jmms-demo-mysql
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - port: {{ .Values.db.port }}
     name: mysql
