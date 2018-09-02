@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jmms-demo-jmms
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: jmms-demo-jmms
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jmms-demo-jmms
+spec:
+  replicas: {{ .Values.jmms.replicas }}
+  template:
+    metadata:
+      labels:
+        app: jmms-demo-jmms
+    spec:
+      containers:
+      - name: jmms-demo-jmms
+        image: registry.bingosoft.net/bingojmms/jmms-demo-jmms
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: 1Gi
+        ports:
+        - containerPort: 8080
+        env:
+        - name: db.host
+          value: {{ .Values.db.host }}
+        - name: db.port
+          value: {{ .Values.db.port }}
+        - name: db.schema
+          value: {{ .Values.db.schema }}
+        - name: db.username
+          value: {{ .Values.db.username }}
+        - name: db.password
+          value: {{ .Values.db.password }}

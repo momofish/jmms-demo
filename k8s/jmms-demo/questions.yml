@@ -1,0 +1,43 @@
+questions:
+- variable: ingress.host
+  default: xip.io
+  label: 发布域名
+  type: string
+  group: 对外发布
+
+- variable: jmms.replicas
+  default: 1
+  label: 应用副本数
+  type: string
+  group: 应用设置
+
+- variable: db.enabled
+  default: true
+  label: 启用内部数据库
+  type: string
+  group: 数据库
+- variable: db.host
+  default: jmms-demo-mysql
+  label: 数据库主机
+  type: string
+  group: 数据库
+- variable: db.port
+  default: 3306
+  label: 数据库端口
+  type: string
+  group: 数据库
+- variable: db.schema
+  default: jmms
+  label: 数据库名
+  type: string
+  group: 数据库
+- variable: db.username
+  default: jmms
+  label: 数据库用户名
+  type: string
+  group: 数据库
+- variable: db.password
+  default: Pass@word1
+  label: 数据库密码
+  type: password
+  group: 数据库

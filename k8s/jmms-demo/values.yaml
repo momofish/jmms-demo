@@ -1,0 +1,15 @@
+ingress:
+  host: xip.io
+
+jmms:
+  replicas: 1
+
+db:
+  enabled: true
+  type: mysql
+  host: jmms-demo-mysql
+  port: 3306
+  database: jmms
+  username: test
+  password: Pass@word1
+  

@@ -1,0 +1,44 @@
+{{- if .Values.db.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: jmms-demo-mysql
+spec:
+  type: ClusterIP
+  ports:
+  - port: {{ .Values.db.port }}
+    name: mysql
+    targetPort: 3306
+  selector:
+    app: jmms-demo-mysql
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jmms-demo-mysql
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jmms-demo-mysql
+    spec:
+      containers:
+      - name: jmms-demo-mysql
+        image: registry.bingosoft.net/bingojmms/jmms-demo-mysql
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: 1Gi
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: Pass@word2018
+        - name: MYSQL_DATABASE
+          value: {{ .Values.db.schema }}
+        - name: MYSQL_USER
+          value: {{ .Values.db.username }}
+        - name: MYSQL_PASSWORD
+          value: {{ .Values.db.password }}
+{{- end }}

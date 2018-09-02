@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web
+  labels:
+    app: {{ template "jmms-demo.name" . }}
+    chart: {{ template "jmms-demo.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+
+spec:
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: jmms-demo-jmms
+            servicePort: 8080
