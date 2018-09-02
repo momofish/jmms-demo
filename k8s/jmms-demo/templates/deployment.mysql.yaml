@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: jmms-demo-mysql
-        image: registry.bingosoft.net/bingojmms/jmms-demo-mysql
+        image: registry.bingosoft.net/jmmsdemo/jmms-demo-mysql
         imagePullPolicy: Always
         resources:
           limits:

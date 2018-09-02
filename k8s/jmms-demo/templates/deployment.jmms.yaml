@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: jmms-demo-jmms
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - port: 8080
     name: http
@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: jmms-demo-jmms
-        image: registry.bingosoft.net/bingojmms/jmms-demo-jmms
+        image: registry.bingosoft.net/jmmsdemo/jmms-demo-jmms
         imagePullPolicy: Always
         resources:
           limits:
@@ -34,7 +34,7 @@ spec:
         - name: db.host
           value: {{ .Values.db.host }}
         - name: db.port
-          value: {{ .Values.db.port }}
+          value: "{{ .Values.db.port }}"
         - name: db.schema
           value: {{ .Values.db.schema }}
         - name: db.username
