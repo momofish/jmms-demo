@@ -14,30 +14,32 @@ questions:
 - variable: db.enabled
   default: true
   label: 启用内部数据库
-  type: string
+  type: boolean
   group: 数据库
-- variable: db.host
-  default: jmms-demo-mysql
-  label: 数据库主机
-  type: string
-  group: 数据库
-- variable: db.port
-  default: 3306
-  label: 数据库端口
-  type: string
-  group: 数据库
-- variable: db.schema
-  default: jmms
-  label: 数据库名
-  type: string
-  group: 数据库
-- variable: db.username
-  default: jmms
-  label: 数据库用户名
-  type: string
-  group: 数据库
-- variable: db.password
-  default: Pass@word1
-  label: 数据库密码
-  type: password
-  group: 数据库
+  show_subquestion_if: false
+  subquestions:
+  - variable: db.host
+    default: jmms-demo-mysql
+    label: 数据库主机
+    type: string
+    group: 数据库
+  - variable: db.port
+    default: 3306
+    label: 数据库端口
+    type: string
+    group: 数据库
+  - variable: db.schema
+    default: jmms
+    label: 数据库名
+    type: string
+    group: 数据库
+  - variable: db.username
+    default: jmms
+    label: 数据库用户名
+    type: string
+    group: 数据库
+  - variable: db.password
+    default: Pass@word1
+    label: 数据库密码
+    type: password
+    group: 数据库
