@@ -4,5 +4,5 @@
  * @return {string}
  */
 function _() {
-    return 'It works!';
+    return 'Hello, It works!';
 }
